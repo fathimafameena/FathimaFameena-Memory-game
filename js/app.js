@@ -134,10 +134,8 @@
     			{
         			stars.children[2].remove('fa fa-star');/*if moves is equal 10 remove one perfomance star*/
     			}
-    			}
     			if(trackmoves==='15')
     			{
-        
       	  			stars.children[1].remove('fa','fa-star');/*if moves is equal 15 remove two perfomance star*/
     			}
 				setTimeout(function()
@@ -172,7 +170,7 @@
 			perfomance=document.querySelector('.moves').innerText;
 			if(perfomance>=10)
 			{
-    			displaystars=2;
+    			displaystars=2;/*displaying the stars in winning message based on the moves*/
 			}
 			if(perfomance>=15)
 			{
@@ -215,12 +213,12 @@
 	{
     	clearTimeout(t);/*clearing the time function*/
 	}
-	function setMovesInit()
+	function setMovesInit()/*intialize the moves to 0*/
 	{
 		var moves=0;
-    	document.querySelector('.moves').innerText=moves;/*intialize the moves to zero when the game starts*/
+    	document.querySelector('.moves').innerText=moves;
 	}
-	function incrementMoves()/*increment the moves by one and set to the  element in html*/
+	function incrementMoves()/*increment the moves to 1*/
 	{
 		var currentmoves=document.querySelector('.moves').innerText;
 		currentmoves++;
