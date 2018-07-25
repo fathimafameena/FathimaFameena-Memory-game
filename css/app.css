@@ -22,7 +22,9 @@ body {
 }
 
 .container {
+     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -40,8 +42,7 @@ h1 {
  */
 
 .deck {
-    width: 660px;
-    min-height: 680px;
+    
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
     border-radius: 10px;
@@ -54,8 +55,7 @@ h1 {
 }
 
 .deck .card {
-    height: 125px;
-    width: 125px;
+    
     background: #2e3d49;
     font-size: 0;
     color: #ffffff;
@@ -70,18 +70,18 @@ h1 {
 .deck .card.open {
     background: #02b3e4;
     cursor: default;
-    animation-name: flipcard;/*adding the flipcard animation*/
+    animation-name: flipcard;/*adding the flipcard animation when the user clicks the card to open*/
     animation-duration: 1s;/*setting the duration for animation*/
-}
-
-.deck .card.show {
-    font-size: 33px;
 }
 
 .deck .card.match {
     cursor: default;
-    background: #02ccba;
-    font-size: 33px;
+    background: #02cc8c;/*changed the background color to green if matched*/
+    animation: shake 0.5s;/*adding the animation for shaking when the cards match */
+}
+.deck .card.unmatch{
+
+    background:#cc1e02;/*changed the background color to red if unmatched*/
     animation: shake 0.5s;/*adding the animation for shaking when the cards match */
 }
 
@@ -90,7 +90,7 @@ h1 {
  */
 
 .score-panel {
-    text-align: left;
+    text-align: center;/*aligned it in center*/
     width: 345px;
     margin-bottom: 10px;
 }
@@ -100,6 +100,8 @@ h1 {
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
+    max-width: 100%;
+
 }
 
 .score-panel .stars li {
@@ -123,7 +125,7 @@ h1 {
 }
 .timer{
     color:#4df1f7;
-    max-width: 100%;
+    max-width: 100%;/*to make it responsive on all viewport sizes*/
 }
 .modal {
     display: none; /* Hidden by default */
@@ -163,7 +165,7 @@ h1 {
     cursor: pointer;
 }
 .winningcontent{
-    font-size: 20px;
+    font-size: 15px;
 }
 .button{
 

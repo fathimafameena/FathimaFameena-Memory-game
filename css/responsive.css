@@ -1,0 +1,100 @@
+@media screen and (max-width: 400px) {/*for screen sizes lesser than 400px reduced the font and card size*/
+
+.deck {
+        width:220px;
+        height:220px;
+}
+.deck .card {
+    width:35px;
+    height:35px;
+   
+}
+h1{
+      font-size:12px;
+}
+.moves{
+    font-size:12px;
+}
+.timer{
+    font-size:12px;
+}
+.restart
+{
+    font-size:12px;
+}
+.stars
+{
+  font-size:12px;
+}
+.movecolor
+{
+    font-size:12px;
+}
+.deck .card.show {
+    font-size: 16px;
+}
+
+.deck .card.match {
+    
+    font-size:16px;
+}
+
+}
+@media screen and (min-width: 401px) and (max-width: 799px) {/*for screen sizes between 401px and 799px reduced the font and card size*/
+
+.deck {
+    width:400px;
+    height:420px;
+}
+.deck .card {
+    width:70px;
+    height:70px;
+   
+}
+h1{
+      font-size:14px;
+}
+.moves{
+    font-size:14px;
+}
+.timer{
+    font-size:14px;
+}
+.restart
+{
+    font-size:14px;
+}
+.stars
+{
+   font-size:14px;
+}
+.movecolor
+{
+    font-size:14px;
+}
+.deck .card.show {
+    font-size: 33px;
+}
+
+.deck .card.match {
+    
+    font-size: 33px;
+}
+}
+@media screen and (min-width:800px) {/* for bigger size viewport*/
+
+ .deck {
+    width:660px;
+    height:600px;
+}
+.deck .card {
+    width:120px;
+    height:120px;
+}
+.deck .card.show {
+    font-size: 33px;
+}
+.deck .card.match {
+    font-size: 33px;
+}
+}
