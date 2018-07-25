@@ -110,34 +110,35 @@
 				opencards[1].classList.add('open');
 				opencards[1].classList.add('show');
 				opencards=[];/*empty the opencards array for next round*/
-				incrementMoves();
+				incrementMoves();/*increment moves by 1 for each match*/
     			trackmoves=document.querySelector('.moves').innerText;
     			console.log("the trackmoves is"+trackmoves);
     			if(trackmoves==='10')
     			{
-       				 stars.children[2].remove('fa fa-star');
+       				 stars.children[2].remove('fa fa-star');/*if moves is equal 10 remove one perfomance star*/
     			}
 				if(trackmoves==='15')
     			{
         
-        			stars.children[1].remove('fa','fa-star');
+        			stars.children[1].remove('fa','fa-star');/*if moves is equal 15 remove two perfomance star*/
     			}
 				console.log("checking for winner");
 				winning();
 			}
 			else/*if the cards did not match close the cards in 1 seconds*/
 			{
-				incrementMoves();
+				incrementMoves();/*increment moves by 1 for each  unmatch*/
     			trackmoves=document.querySelector('.moves').innerText;
     			console.log("the trackmoves is"+trackmoves);
     			if(trackmoves==='10')
     			{
-        			stars.children[2].remove('fa fa-star');
+        			stars.children[2].remove('fa fa-star');/*if moves is equal 10 remove one perfomance star*/
+    			}
     			}
     			if(trackmoves==='15')
     			{
         
-      	  			stars.children[1].remove('fa','fa-star');
+      	  			stars.children[1].remove('fa','fa-star');/*if moves is equal 15 remove two perfomance star*/
     			}
 				setTimeout(function()
 				{
@@ -217,9 +218,9 @@
 	function setMovesInit()
 	{
 		var moves=0;
-    	document.querySelector('.moves').innerText=moves;
+    	document.querySelector('.moves').innerText=moves;/*intialize the moves to zero when the game starts*/
 	}
-	function incrementMoves()
+	function incrementMoves()/*increment the moves by one and set to the  element in html*/
 	{
 		var currentmoves=document.querySelector('.moves').innerText;
 		currentmoves++;
