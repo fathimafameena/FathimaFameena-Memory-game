@@ -27,6 +27,7 @@
     	}));
    		console.log("i am cardHtml"+cardHtml.join(''));
     	deck.innerHTML=cardHtml.join('');
+    	setMovesInit();/intialize the moves */
     }
 	initGame();//intialize function is called when the game starts
 	// Shuffle function from http://stackoverflow.com/a/2450976
@@ -62,6 +63,10 @@
         	modal.style.display = "none";
     	}
 	}
+	var stars=document.querySelector('.stars');
+	console.log(stars.children);
+	console.log(stars.children[2]);
+	var trackmoves;
     var restart=document.querySelector('.restart');
 	restart.addEventListener('click',function(event)/*restart button code*/
 	{
@@ -105,11 +110,35 @@
 				opencards[1].classList.add('open');
 				opencards[1].classList.add('show');
 				opencards=[];/*empty the opencards array for next round*/
+				incrementMoves();
+    			trackmoves=document.querySelector('.moves').innerText;
+    			console.log("the trackmoves is"+trackmoves);
+    			if(trackmoves==='10')
+    			{
+       				 stars.children[2].remove('fa fa-star');
+    			}
+				if(trackmoves==='15')
+    			{
+        
+        			stars.children[1].remove('fa','fa-star');
+    			}
 				console.log("checking for winner");
 				winning();
 			}
 			else/*if the cards did not match close the cards in 1 seconds*/
 			{
+				incrementMoves();
+    			trackmoves=document.querySelector('.moves').innerText;
+    			console.log("the trackmoves is"+trackmoves);
+    			if(trackmoves==='10')
+    			{
+        			stars.children[2].remove('fa fa-star');
+    			}
+    			if(trackmoves==='15')
+    			{
+        
+      	  			stars.children[1].remove('fa','fa-star');
+    			}
 				setTimeout(function()
 				{
  					opencards[0].classList.remove('open','show');
@@ -137,10 +166,24 @@
 		if(allmatch.length===16)/*if all 16 cards has a match class display the winning message*/
 		{
 			stoptimer();/*stopping the timer when the game ends*/
-			console.log("Congratulations you won the game");
-    		var modalcontent=document.querySelector('.winningcontent');
-    		var winmessage=`CONGRATULATIONS YOU WON the game`;
+			console.log("Congratulations you won the game in "+document.querySelector('.timer').innerText+"   with "+document.querySelector('.moves').innerText+ "   moves");
+ 			var performance,displaystars=0;
+			perfomance=document.querySelector('.moves').innerText;
+			if(perfomance>=10)
+			{
+    			displaystars=2;
+			}
+			if(perfomance>=15)
+			{
+   				 displaystars=1
+			}
+			if(perfomance<10)
+			{
+   				 displaystars=3
+			}
+    		var winmessage=`CONGRATULATIONS YOU WON the game with ${displaystars} stars and in a Timing of  ${document.querySelector('.timer').innerText}`;
     		console.log("the winn message is"+winmessage);
+    		var modalcontent=document.querySelector('.winningcontent');
     		modalcontent.innerText=winmessage;/*display the message inside modal*/
        		setTimeout(modalDisplay,1000);/*dispalying the modal after 1 second*/
 
@@ -171,6 +214,17 @@
 	{
     	clearTimeout(t);/*clearing the time function*/
 	}
+	function setMovesInit()
+	{
+		var moves=0;
+    	document.querySelector('.moves').innerText=moves;
+	}
+	function incrementMoves()
+	{
+		var currentmoves=document.querySelector('.moves').innerText;
+		currentmoves++;
+		document.querySelector('.moves').innerText=currentmoves;
+    }
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)

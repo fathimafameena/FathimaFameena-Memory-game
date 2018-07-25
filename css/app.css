@@ -17,7 +17,7 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    background: #ffffff url('../img/pinkdust.png'); /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
 }
 
@@ -31,6 +31,8 @@ body {
 h1 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
+    color:#4df1f7;
+    width: 100%;
 }
 
 /*
@@ -101,8 +103,16 @@ h1 {
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
+    color:#4df1f7;
 }
-
+.moves{
+    color:#4df1f7;
+    max-width: 100%;
+}
+.movecolor{
+    color:#4df1f7;
+    max-width: 100%;
+}
 .restart {
     float: right;
     max-width: 100%;
