@@ -109,6 +109,10 @@ h1 {
     cursor: pointer;
     color:#4df1f7;
 }
+.timer{
+    color:#4df1f7;
+    max-width: 100%;
+}
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */

@@ -54,6 +54,8 @@
 	{
 		document.location.reload();
 	});
+	var gametime = document.querySelector('.timer'),seconds = 0, minutes = 0,t;
+	timer();/*calling the timer to start when the page intialises*/
 
     allcards.forEach(function(card)
 	{
@@ -135,7 +137,22 @@
 	{
     	modal.style.display = "block"
 	}
+	function add() /*function for calculating seconds and minutes*/
+	{
+   		seconds++;
+    	if (seconds >= 60)
+    	{
+        	seconds = 0;
+        	minutes++;
+        }
+    	gametime.textContent = `   ${minutes}m:${seconds} s`;/*setting the time in the element */
 
+    	timer();
+	}
+	function timer()
+	{
+    	t = setTimeout(add, 1000);
+	}
 
 /*
  * set up the event listener for a card. If a card is clicked:
