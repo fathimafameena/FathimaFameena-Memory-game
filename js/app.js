@@ -47,6 +47,8 @@
 	var allcards=document.querySelectorAll('.card');/*selecting the element with class card*/
 	// console.log(allcards);
 	var opencards=[];/*creating an empty array to  store all open cards*/
+	var modal = document.getElementById('myModal');/*modal class*/
+    var span = document.getElementsByClassName("close")[0];/*close button in modal*/
 
     allcards.forEach(function(card)
 	{
@@ -83,6 +85,8 @@
 				opencards[1].classList.add('open');
 				opencards[1].classList.add('show');
 				opencards=[];/*empty the opencards array for next round*/
+				console.log("checking for winner");
+				winning();
 			}
 			else/*if the cards did not match close the cards in 1 seconds*/
 			{
@@ -98,6 +102,36 @@
 		}
 		});
 	});
+	function winning()/*function to find if the player won the game*/
+	{
+		console.log(" i am inside winning function");
+		var allcards=document.querySelectorAll('.card');
+		var allmatch=[];
+		allcards.forEach(function(card)
+		{
+			if(card.classList.contains('match'))
+			{
+				allmatch.push(card);/*if the cards has a match class push in an array*/
+			}
+		});
+		if(allmatch.length===16)/*if all 16 cards has a match class display the winning message*/
+		{
+			console.log("Congratulations you won the game");
+    		var modalcontent=document.querySelector('.winningcontent');
+    		var winmessage=`CONGRATULATIONS YOU WON the game`;
+    		console.log("the winn message is"+winmessage);
+    		modalcontent.innerText=winmessage;/*display the message inside modal*/
+       		setTimeout(modalDisplay,1000);/*dispalying the modal after 1 second*/
+
+		}
+
+	}
+	function modalDisplay()
+	{
+    	modal.style.display = "block"
+	}
+
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
