@@ -49,6 +49,11 @@
 	var opencards=[];/*creating an empty array to  store all open cards*/
 	var modal = document.getElementById('myModal');/*modal class*/
     var span = document.getElementsByClassName("close")[0];/*close button in modal*/
+    var restart=document.querySelector('.restart');
+	restart.addEventListener('click',function(event)/*restart button code*/
+	{
+		document.location.reload();
+	});
 
     allcards.forEach(function(card)
 	{

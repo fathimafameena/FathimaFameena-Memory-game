@@ -103,9 +103,11 @@ h1 {
     display: inline-block;
 }
 
-.score-panel .restart {
+.restart {
     float: right;
+    max-width: 100%;
     cursor: pointer;
+    color:#4df1f7;
 }
 .modal {
     display: none; /* Hidden by default */
