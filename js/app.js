@@ -49,6 +49,19 @@
 	var opencards=[];/*creating an empty array to  store all open cards*/
 	var modal = document.getElementById('myModal');/*modal class*/
     var span = document.getElementsByClassName("close")[0];/*close button in modal*/
+	span.onclick = function() 
+	{
+    	modal.style.display = "none";
+	}
+
+// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function(event) 
+	{
+    	if (event.target == modal) 
+    	{
+        	modal.style.display = "none";
+    	}
+	}
     var restart=document.querySelector('.restart');
 	restart.addEventListener('click',function(event)/*restart button code*/
 	{
@@ -123,6 +136,7 @@
 		});
 		if(allmatch.length===16)/*if all 16 cards has a match class display the winning message*/
 		{
+			stoptimer();/*stopping the timer when the game ends*/
 			console.log("Congratulations you won the game");
     		var modalcontent=document.querySelector('.winningcontent');
     		var winmessage=`CONGRATULATIONS YOU WON the game`;
@@ -153,7 +167,10 @@
 	{
     	t = setTimeout(add, 1000);
 	}
-
+	function stoptimer() 
+	{
+    	clearTimeout(t);/*clearing the time function*/
+	}
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
