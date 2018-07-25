@@ -68,9 +68,10 @@ h1 {
 }
 
 .deck .card.open {
-    transform: rotateY(0);
     background: #02b3e4;
     cursor: default;
+    animation-name: flipcard;/*adding the flipcard animation*/
+    animation-duration: 1s;/*setting the duration for animation*/
 }
 
 .deck .card.show {
@@ -175,4 +176,16 @@ h1 {
     font-size: 16px;
     margin: auto;
     cursor: pointer;
+}
+@keyframes flipcard {/*animation for flipping cards when u make it open*/
+
+    0%{
+        -webkit-transform: rotateX(-90deg); /* Safari */
+        transform: rotateX(-90deg);
+        }
+    
+    100% {
+        -webkit-transform: rotateX(0deg); /* Safari */
+         transform: rotateX(0deg);
+         }
 }
