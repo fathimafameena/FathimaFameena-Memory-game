@@ -1,8 +1,8 @@
 @media screen and (max-width: 400px) {/*for screen sizes lesser than 400px reduced the font and card size*/
 
 .deck {
-        width:220px;
-        height:220px;
+     width:220px;
+     height:220px;
 }
 .deck .card {
     width:35px;

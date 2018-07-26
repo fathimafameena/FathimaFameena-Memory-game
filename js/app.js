@@ -20,27 +20,20 @@
 	var trackmoves;
     var restart=document.querySelector('.restart');
 	var gametime = document.querySelector('.timer'),seconds = 0, minutes = 0,t;
+	var timerstart=0;
     allcards.forEach(function(card)
 	{
 		card.addEventListener('click',function(event)/*adding a event listener function for clicking the card*/
 		{
 		if(!card.classList.contains('open')&& !card.classList.contains('show')&& !card.classList.contains('match'))/*click only the cards that is closed and donot click the already opened cards*/
 		{
-			incrementMoves();/*increment moves by 1 for each click*/
-			trackmoves=document.querySelector('.moves').innerText;
-			if(trackmoves==='1')
+			
+			timerstart=timerstart+1;
+			console.log("the time variable is"+timerstart);
+			if(timerstart===1)
 			{
-				timer();/*calling the timer to start when the first card is clicked*/
+               timer();/*starting the timer on the first click*/
 			}
-    		console.log("the trackmoves is"+trackmoves);
-    		if(trackmoves==='20')
-    		{
-       			 stars.children[2].remove('fa fa-star');/*if moves is equal 10 remove one perfomance star*/
-    		}
-			if(trackmoves==='40')
-    		{
-        		stars.children[1].remove('fa','fa-star');/*if moves is equal 15 remove two perfomance star*/
-    		}
 			opencards.push(card);/*push the cards that is open into the opencards array*/
 			if(opencards.length<2)/*if only one card is open*/
 			{
@@ -81,29 +74,40 @@
 			stoptimer();/*stopping the timer when the game ends*/
 			
  			var displaystars=0;
-			if(trackmoves>=40)
+ 			var modalcontent=document.querySelector('.winningcontent');
+    		var modalTime=document.querySelector('.modaltime');
+    		var modalmoves=document.querySelector('.modalmoves');
+    		var modalstars=document.querySelector('.modalstar');
+    		var modaltimemessage=`Time=${document.querySelector('.timer').innerText}`;
+    		var modalmovesmessage=`Moves=${document.querySelector('.moves').innerText}`;
+			if(trackmoves>=25)
 			{
     			displaystars=1;/*displaying the perfomance star in number  in winning message based on the moves*/
 			}
-			if(trackmoves>=21&&trackmoves<40)
+			if(trackmoves>=15&&trackmoves<25)
 			{
    				 displaystars=2
 			}
-			if(trackmoves<21)
+			if(trackmoves<15)
 			{
    				 displaystars=3
 			}
 			if(displaystars===1)
 			{
-    		var winmessage=`YOU WON the game with ${displaystars} star and in a Timing of  ${document.querySelector('.timer').innerText}. Try improving your memory`;
+    		var winmessage=`YOU WON the game.Try improving your memory`;
+    		var modalstarmessage=`Star=${displaystars}star`;
     		}
     		else
     		{
-    		var winmessage=`CONGRATULATIONS YOU WON the game with ${displaystars} stars and in a Timing of  ${document.querySelector('.timer').innerText}`;
+    		var winmessage=`CONGRATULATIONS YOU WON the game`;
+    		var modalstarmessage=`Star=${displaystars}stars`;
 
     		}
-    		var modalcontent=document.querySelector('.winningcontent');
+    		
     		modalcontent.innerText=winmessage;/*display the message inside modal*/
+    		modalTime.innerText=modaltimemessage;
+    		modalmoves.innerText=modalmovesmessage;
+    		modalstars.innerText=modalstarmessage;
        		setTimeout(modalDisplay,1000);/*dispalying the modal after 1 second*/
        	}
 
@@ -166,6 +170,17 @@
 		opencards[1].classList.add('open');
 		opencards[1].classList.add('show');
 		opencards=[];/*empty the opencards array for next round*/
+		incrementMoves();/*increment moves by 1 for each click*/
+			trackmoves=document.querySelector('.moves').innerText;
+    		console.log("the trackmoves is"+trackmoves);
+    		if(trackmoves==='15')
+    		{
+       			 stars.children[2].remove('fa fa-star');/*if moves is equal 10 remove one perfomance star*/
+    		}
+			if(trackmoves==='25')
+    		{
+        		stars.children[1].remove('fa','fa-star');/*if moves is equal 15 remove two perfomance star*/
+    		}
 		console.log("checking for winner");
 		winning();
 	}
@@ -173,6 +188,17 @@
 	{
 		opencards[0].classList.add('unmatch');
 		opencards[1].classList.add('unmatch');/*code for making the background red if cards didnt match*/
+		incrementMoves();/*increment moves by 1 for each click*/
+		trackmoves=document.querySelector('.moves').innerText;
+    	console.log("the trackmoves is"+trackmoves);
+    		if(trackmoves==='15')
+    		{
+       			 stars.children[2].remove('fa fa-star');/*if moves is equal 10 remove one perfomance star*/
+    		}
+			if(trackmoves==='25')
+    		{
+        		stars.children[1].remove('fa','fa-star');/*if moves is equal 15 remove two perfomance star*/
+    		}
 		setTimeout(function()
 		{
  			opencards[0].classList.remove('open','show','unmatch');
