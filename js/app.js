@@ -27,7 +27,6 @@
         {
         if(!card.classList.contains('open')&& !card.classList.contains('show')&& !card.classList.contains('match'))/*click only the cards that is closed and donot click the already opened cards*/
         {
-            
             timerstart=timerstart+1;
             console.log("the time variable is"+timerstart);
             if(timerstart===1)
@@ -38,7 +37,6 @@
             if(opencards.length<2)/*if only one card is open*/
             {
                 displayOneCards();
-
             }
             if(opencards.length==2)/*if two cards are open*/
             {
@@ -72,7 +70,6 @@
         if(allmatch.length===16)/*if all 16 cards has a match class display the winning message*/
         {
             stoptimer();/*stopping the timer when the game ends*/
-            
             var displaystars=0;
             var modalcontent=document.querySelector('.winningcontent');/*declaring the variable for modal content message*/
             var modalTime=document.querySelector('.modaltime');
@@ -92,7 +89,7 @@
             {
                  displaystars=3
             }
-            if(displaystars===1)
+            if(displaystars===1)/*message for low star rating*/
             {
             var winmessage=`YOU WON the game.Try improving your memory`;
             var modalstarmessage=`Star=${displaystars}star`;
@@ -103,7 +100,6 @@
             var modalstarmessage=`Star=${displaystars}stars`;
 
             }
-            
             modalcontent.innerText=winmessage;/*display the message inside modal*/
             modalTime.innerText=modaltimemessage;
             modalmoves.innerText=modalmovesmessage;
@@ -112,7 +108,6 @@
         }
 
     }
-
     function genarateCard(card)
     {
         return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;/*genarating the HTML list dynamically for all cards*/
@@ -260,13 +255,3 @@
         currentmoves++;
         document.querySelector('.moves').innerText=currentmoves;
     }
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
