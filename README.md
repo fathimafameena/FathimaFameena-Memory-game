@@ -1,20 +1,34 @@
 # Memory Game Project
 
-## Table of Contents
+This is a simple game built to test a users memory. There's a deck of cards with different icons,and it tests the players to match all cards with less moves and  in less time.
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+## How to Play
+Go to this Link to play https://fathimafameena.github.io/FathimaFameena-Memory-game/
 
-## Instructions
+### Instructions
+* Click on a card and the timer will start now.
+* Keep opening cards and try to remember each card to match with its pair.
+* If the player opens two unmatched cards the cards turn red and disappear.
+* If the player opens two matched cards,the cards turn green and stay opened.
+* For Each pair of opened cards the moves increments by 1.
+* You can check the time taken to match all the cards in the timer displayed on the top of the game.
+* With the increase in the no.of moves,the performance star decreases.
+* On completely matching all cards,congratulations modal appears with the moves,timing and star information.
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
 
-To get started, open `js/app.js` and start building out the app's functionality
+### Building the Memory Game
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+* CSS Styling and HTML code was provided by the udacity starter code.
+* Dynamically created a deck of cards that shuffles when game is refreshed using javascript.
+* created a counter to count the number of moves made by player and timer to know the duration of a play 
+  using Javascript.
+* added effects to cards when they match and are unmatched using CSS and javascript.
+* create a pop-up modal when player wins game using Javascript.
 
-## Contributing
+### Code Dependencies
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+* Used the google font using the following link-"https://fonts.googleapis.com/css?family=Coda".
+* Used the font awesome icons for cards using the link-"https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1		/css/font-awesome.min.css".
+* Used the Background pattern "Pinkdust.png" from subtle patterns.
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
