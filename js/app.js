@@ -14,25 +14,34 @@
 	initGame();//intialize function is called when the game starts
 	var allcards=document.querySelectorAll('.card');/*selecting the element with class card*/
 	var opencards=[];/*creating an empty array to  store all open cards*/
-	var modal = document.getElementById('myModal');/*modal class*/
+	var modal = document.getElementById('myModal');/* a variable for  accessing modal*/
     var span = document.getElementsByClassName("close")[0];/*close button in modal*/
-	var stars=document.querySelector('.stars');/* a variable for star class element*/
-	console.log(stars.children);
-	console.log(stars.children[2]);
+	var stars=document.querySelector('.stars');/* a variable for  accessing star element*/
 	var trackmoves;
     var restart=document.querySelector('.restart');
 	var gametime = document.querySelector('.timer'),seconds = 0, minutes = 0,t;
     allcards.forEach(function(card)
 	{
-		console.log("the  class contains open is"+card.classList.contains('open'));
 		card.addEventListener('click',function(event)/*adding a event listener function for clicking the card*/
 		{
 		if(!card.classList.contains('open')&& !card.classList.contains('show')&& !card.classList.contains('match'))/*click only the cards that is closed and donot click the already opened cards*/
 		{
-			console.log("the contains open is"+card.classList.contains('open'));
-			console.log(card+" was clicked");
+			incrementMoves();/*increment moves by 1 for each click*/
+			trackmoves=document.querySelector('.moves').innerText;
+			if(trackmoves==='1')
+			{
+				timer();/*calling the timer to start when the first card is clicked*/
+			}
+    		console.log("the trackmoves is"+trackmoves);
+    		if(trackmoves==='20')
+    		{
+       			 stars.children[2].remove('fa fa-star');/*if moves is equal 10 remove one perfomance star*/
+    		}
+			if(trackmoves==='40')
+    		{
+        		stars.children[1].remove('fa','fa-star');/*if moves is equal 15 remove two perfomance star*/
+    		}
 			opencards.push(card);/*push the cards that is open into the opencards array*/
-			console.log("the card is" +opencards.length);
 			if(opencards.length<2)/*if only one card is open*/
 			{
 				displayOneCards();
@@ -70,18 +79,17 @@
 		if(allmatch.length===16)/*if all 16 cards has a match class display the winning message*/
 		{
 			stoptimer();/*stopping the timer when the game ends*/
-			console.log("Congratulations you won the game in "+document.querySelector('.timer').innerText+"   with "+document.querySelector('.moves').innerText+ "   moves");
- 			var performance,displaystars=0;
-			perfomance=document.querySelector('.moves').innerText;
-			if(perfomance>=25)
+			
+ 			var displaystars=0;
+			if(trackmoves>=40)
 			{
     			displaystars=1;/*displaying the perfomance star in number  in winning message based on the moves*/
 			}
-			if(perfomance>=15)
+			if(trackmoves>=21&&trackmoves<40)
 			{
    				 displaystars=2
 			}
-			if(perfomance<10)
+			if(trackmoves<21)
 			{
    				 displaystars=3
 			}
@@ -94,20 +102,16 @@
     		var winmessage=`CONGRATULATIONS YOU WON the game with ${displaystars} stars and in a Timing of  ${document.querySelector('.timer').innerText}`;
 
     		}
-    		console.log("the winn message is"+winmessage);
     		var modalcontent=document.querySelector('.winningcontent');
     		modalcontent.innerText=winmessage;/*display the message inside modal*/
        		setTimeout(modalDisplay,1000);/*dispalying the modal after 1 second*/
-
-		}
+       	}
 
 	}
 
 	function genarateCard(card)
     {
-    	console.log("i am called");
     	return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;/*genarating the HTML list dynamically for all cards*/
-    	console.log(`<li class="card"><i class="fa ${card}"></i></li>`);	
     }   
 			/*a function to intialise the game with all intial parameters*/
     function initGame()
@@ -121,7 +125,7 @@
    		console.log("i am cardHtml"+cardHtml.join(''));
     	deck.innerHTML=cardHtml.join('');
     	setMovesInit();/intialize the moves */
-    	timer();/*calling the timer to start when the page intialises*/
+    	
     }
     // Shuffle function from http://stackoverflow.com/a/2450976
 	function shuffle(array) 
@@ -162,35 +166,13 @@
 		opencards[1].classList.add('open');
 		opencards[1].classList.add('show');
 		opencards=[];/*empty the opencards array for next round*/
-		incrementMoves();/*increment moves by 1 for each match*/
-    	trackmoves=document.querySelector('.moves').innerText;
-    	console.log("the trackmoves is"+trackmoves);
-    	if(trackmoves==='15')
-    	{
-       		 stars.children[2].remove('fa fa-star');/*if moves is equal 10 remove one perfomance star*/
-    	}
-		if(trackmoves==='25')
-    	{
-        	stars.children[1].remove('fa','fa-star');/*if moves is equal 15 remove two perfomance star*/
-    	}
 		console.log("checking for winner");
 		winning();
 	}
 	function unmatch()
 	{
 		opencards[0].classList.add('unmatch');
-		opencards[1].classList.add('unmatch');
-		incrementMoves();/*increment moves by 1 for each  unmatch*/
-    	trackmoves=document.querySelector('.moves').innerText;
-    	console.log("the trackmoves is"+trackmoves);
-    	if(trackmoves==='15')
-    	{
-        	stars.children[2].remove('fa fa-star');/*if moves is equal 15 remove one perfomance star*/
-    	}
-    	if(trackmoves==='25')
-    	{
-      	  	stars.children[1].remove('fa','fa-star');/*if moves is equal 25 remove two perfomance star*/
-    	}
+		opencards[1].classList.add('unmatch');/*code for making the background red if cards didnt match*/
 		setTimeout(function()
 		{
  			opencards[0].classList.remove('open','show','unmatch');
